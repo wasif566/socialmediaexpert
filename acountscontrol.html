@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>All Users</h2>
+  <ul id="userList"></ul>
+
+  <script>
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => {
+        const ul = document.getElementById('userList');
+        users.forEach(user => {
+          const li = document.createElement('li');
+          li.textContent = `👤 ${user.username} | 📧 ${user.email} | 📱 ${user.whatsapp}`;
+          ul.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
